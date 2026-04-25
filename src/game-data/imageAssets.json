@@ -1,0 +1,180 @@
+[
+    {
+        "id": "Chalmers-sheet-l-small.png",
+        "originalFileName": "Chalmers-sheet-l-small.png",
+        "category": "spriteSheet",
+        "rows": 3,
+        "cols": 6,
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "Chalmers-sheet-r-small.png",
+        "originalFileName": "Chalmers-sheet-r-small.png",
+        "category": "spriteSheet",
+        "rows": 3,
+        "cols": 6,
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "OUTSIDE",
+        "originalFileName": "bigfront.png",
+        "category": "background",
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "bag.png",
+        "originalFileName": "bag.png",
+        "category": "item",
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "bourbon.png",
+        "originalFileName": "bourbon.png",
+        "category": "item",
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "buckets.png",
+        "originalFileName": "buckets.png",
+        "category": "any",
+        "cols": 4,
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "dining_room2.png",
+        "originalFileName": "dining_room2.png",
+        "category": "background",
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "frontDoor.png",
+        "originalFileName": "frontDoor.png",
+        "category": "spriteSheet",
+        "cols": 5,
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "glazed-roast.png",
+        "originalFileName": "glazed-roast.png",
+        "category": "item",
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "hamburgers_on_platter.png",
+        "originalFileName": "hamburgers_on_platter.png",
+        "rows": 3,
+        "category": "spriteSheet",
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "kitchen-door.png",
+        "originalFileName": "kitchen-door.png",
+        "category": "spriteSheet",
+        "rows": 3,
+        "cols": 4,
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "kitchen.png",
+        "originalFileName": "kitchen.png",
+        "category": "background",
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "oven.png",
+        "originalFileName": "oven.png",
+        "category": "spriteSheet",
+        "cols": 6,
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "platter.png",
+        "originalFileName": "platter.png",
+        "category": "item",
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "pour.png",
+        "originalFileName": "pour.png",
+        "category": "spriteSheet",
+        "cols": 5,
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "roast.png",
+        "originalFileName": "roast.png",
+        "category": "item",
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "skinner_main.png",
+        "originalFileName": "skinner_main.png",
+        "category": "spriteSheet",
+        "rows": 5,
+        "cols": 6,
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "skinner_wide.png",
+        "originalFileName": "skinner_wide.png",
+        "category": "spriteSheet",
+        "rows": 3,
+        "cols": 4,
+        "href": "",
+        "widthScale": 1.3,
+        "img": {}
+    },
+    {
+        "id": "table.png",
+        "originalFileName": "table.png",
+        "category": "any",
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "title-chalmers.png",
+        "originalFileName": "title-chalmers.png",
+        "category": "any",
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "title-skinner.png",
+        "originalFileName": "title-skinner.png",
+        "category": "any",
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "todo.png",
+        "originalFileName": "todo.png",
+        "category": "item",
+        "href": "",
+        "img": {}
+    },
+    {
+        "id": "windows.png",
+        "originalFileName": "windows.png",
+        "category": "spriteSheet",
+        "cols": 4,
+        "href": "",
+        "img": {}
+    }
+]
