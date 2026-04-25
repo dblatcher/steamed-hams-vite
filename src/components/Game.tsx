@@ -1,5 +1,6 @@
 import { GameRunner } from 'point-click-components';
 import { gameDesign, getImageAsset, getSoundAsset } from '../assets';
+import { Layout } from './Layouts';
 
 interface Props {
     logDebugMessages?: boolean;
@@ -12,6 +13,7 @@ export const Game = ({ logDebugMessages, returnToTitle }: Props) => {
         <div className='frame'>
             <div className='game-wrapper'>
                 <GameRunner
+                    Layout={Layout}
                     gameDesign={gameDesign}
                     getImageAsset={getImageAsset}
                     getSoundAsset={getSoundAsset}
