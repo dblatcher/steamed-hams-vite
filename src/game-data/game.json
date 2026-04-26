@@ -3428,7 +3428,8 @@
         {
             "id": "WALK",
             "label": "walk to",
-            "isMoveVerb": true
+            "isMoveVerb": true,
+            "isNotForItems": true
         },
         {
             "id": "LOOK",
