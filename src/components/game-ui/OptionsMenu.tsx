@@ -1,11 +1,10 @@
-import { GameDataContext, UiStateContext } from "point-click-components"
+import { GameDataContext } from "point-click-components"
 import { useContext } from "react"
 
 
 export const OptionsMenu = () => {
 
     const { dispatch, gameState } = useContext(GameDataContext)
-    const { uiState, dispatchUi } = useContext(UiStateContext)
 
     return <div >
         <label >
@@ -25,17 +24,5 @@ export const OptionsMenu = () => {
             sound off
         </label>
         <button onClick={() => dispatch({ type: 'RESET', reason: 'restart' })}>reset</button>
-        <button
-            onClick={() => dispatchUi({
-                type: 'SET_SCREEN_SIZE',
-                width: (uiState.roomWidth ?? 200) + 20,
-                height: (uiState.roomHeight ?? 200) + 20,
-            })} >+</button>
-        <button
-            onClick={() => dispatchUi({
-                type: 'SET_SCREEN_SIZE',
-                width: (uiState.roomWidth ?? 200) - 20,
-                height: (uiState.roomHeight ?? 200) - 20,
-            })} >-</button>
     </div>
 }
