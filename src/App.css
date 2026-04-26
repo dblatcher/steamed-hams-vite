@@ -7,11 +7,6 @@
     background-color: blanchedalmond;
 }
 
-.game-wrapper {
-    margin: 0 auto;
-    max-width: 600px;
-}
-
 .loading-screen main {
     max-width: 600px;
     margin: 0 auto;
