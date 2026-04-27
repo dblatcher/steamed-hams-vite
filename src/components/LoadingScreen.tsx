@@ -1,45 +1,45 @@
 import { useState } from "react";
 import { AssetPreloader } from "./AssetPreloader";
 import { GameIcon } from "./GameIcon";
+import { Box, Button, Container, Typography } from "@mui/material";
 
 interface Props {
     start: { (): void }
     showGameEndMessage: boolean
 }
 
+const row = { display: 'flex', justifyContent: 'center', gap: 2, paddingBottom: 1 }
 
 export const LoadingScreen = ({ start, showGameEndMessage }: Props) => {
     const [assetsLoaded, setAssetsLoaded] = useState(false);
-    return <div className="frame loading-screen">
-        <main>
-            <header>
-                <GameIcon height={70}/>
-                <h1>Your game name here</h1>
-            </header>
-            <section style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <div>
-                    <p>This is the loading screen to display while the assets for you game are being fetched.</p>
-                    <p>You can add any content here.</p>
-                </div>
-                <div>
-                    {assetsLoaded && (
-                        <button onClick={start}>start</button>
-                    )}
-                </div>
-            </section>
-            <section>
-                <p>This game was build using Point And Click, a free web-based adventure game editor.</p>
-            </section>
-            {showGameEndMessage && (
-                <section>
-                    <p>
-                        <strong>Well done, you finished the game.</strong>
-                    </p>
-                </section>
-            )}
-            <footer>
+    return <Container component={'main'} maxWidth="lg">
+        <Box component={'header'} >
+            <Box sx={row}>
+                <GameIcon height={100} />
+                <Typography variant="h1">Steamed Hams</Typography>
+            </Box>
+            <Box sx={row}>
+                <Typography>but it's a point and click adventure game</Typography>
+            </Box>
+        </Box>
+        <Box component={'section'} >
+            <Box sx={row}>
+                <Button onClick={start} disabled={!assetsLoaded} variant="contained">start</Button>
+
+            </Box>
+            <Box sx={row}>
                 <AssetPreloader reportReady={() => setAssetsLoaded(true)} />
-            </footer>
-        </main>
-    </div>
+            </Box>
+        </Box>
+        <Box sx={row}>
+            <Typography>This game was build using <a target="_blank" href="http://point-and-click-seven.vercel.app/">Point And Click</a>, a free web-based adventure game editor.</Typography>
+        </Box>
+        {showGameEndMessage && (
+            <section>
+                <p>
+                    <strong>Well done, you finished the game.</strong>
+                </p>
+            </section>
+        )}
+    </Container>
 }

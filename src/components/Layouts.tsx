@@ -44,8 +44,11 @@ export const Layout = () => {
         }
     }, [handleResize])
 
-    return <Container maxWidth='md' sx={{ paddingY: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'absolute', inset: 0 }}>
-        <Box component={Card} sx={{ display: 'flex', justifyContent: 'flex-start', gap: 1, padding: 1, backgroundColor:'secondary.light' }} ref={boxRef}>
+    return <Container component={'main'}
+        maxWidth='md'
+        sx={{ paddingY: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'absolute', inset: 0 }}
+    >
+        <Box component={Card} sx={{ display: 'flex', justifyContent: 'flex-start', gap: 1, padding: 1, backgroundColor: 'secondary.light' }} ref={boxRef}>
             <Box>
                 {ui === 'story-board' && storyBoard ? (
                     <StoryBoardPlayer storyBoard={storyBoard} />
