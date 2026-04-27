@@ -1,7 +1,7 @@
-import { Box, Container } from "@mui/material";
+import { Box, Card, Container } from "@mui/material";
 import { ContextualGameRoom, GameDataContext, StoryBoardPlayer, UiStateContext } from "point-click-components";
 import type { GameData } from "point-click-lib";
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef } from "react";
 import { ConversationMenu } from "./ConversationMenu";
 import { ActionButtons } from "./game-ui/ActionButtons";
 import { CommandLine } from "./game-ui/CommandLine";
@@ -32,7 +32,7 @@ export const Layout = () => {
     const handleResize = useCallback(() => {
         const containerWidth = boxRef.current?.offsetWidth;
         if (containerWidth) {
-            dispatchUi({ type: 'SET_SCREEN_SIZE', width: containerWidth - 60 })
+            dispatchUi({ type: 'SET_SCREEN_SIZE', width: containerWidth - 90, height: window.innerHeight - 120 })
         }
     }, [dispatchUi, boxRef.current])
 
@@ -44,29 +44,37 @@ export const Layout = () => {
         }
     }, [handleResize])
 
-    return <Container maxWidth='md'>
-        <OptionsMenu />
-
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 1 }} ref={boxRef}>
+    return <Container maxWidth='md' sx={{ paddingY: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'absolute', inset: 0 }}>
+        <Box component={Card} sx={{ display: 'flex', justifyContent: 'flex-start', gap: 1, padding: 1, backgroundColor:'secondary.light' }} ref={boxRef}>
             <Box>
                 {ui === 'story-board' && storyBoard ? (
                     <StoryBoardPlayer storyBoard={storyBoard} />
                 ) : (
                     <ContextualGameRoom />
                 )}
+                <Box sx={{ minHeight: 90 }}>
+                    {ui === 'verbs' && <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingTop: 1, }}>
+                        <CommandLine />
+                        <InventoryTargets />
+                    </Box>}
+                    {ui === 'conversation' && (
+                        <ConversationMenu />
+                    )}
+                </Box>
             </Box>
 
-            <Box>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>
                 {ui === 'verbs' && <ActionButtons />}
             </Box>
         </Box>
 
-        {ui === 'verbs' && <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <CommandLine />
-            <InventoryTargets />
-        </Box>}
-        {ui === 'conversation' && (
-            <ConversationMenu />
-        )}
+        <Box sx={{
+            position: 'fixed',
+            right: 0,
+            top: 0,
+            padding: 1
+        }}>
+            <OptionsMenu />
+        </Box>
     </Container>
 }

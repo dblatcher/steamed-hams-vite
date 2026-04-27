@@ -20,10 +20,10 @@ export function CommandLine() {
     const hoverText = hoverTarget ? hoverTarget.name || hoverTarget.id : '...';
 
     return (
-        <Typography >
-            <span>{text}</span>
+        <Typography sx={{ color: 'primary.contrastText' }}>
+            {text}
             {hoverText && (
-                <span style={{ color: 'red' }}>{' '}{hoverText}</span>
+                <Typography component={'span'} >{' '}{hoverText}</Typography>
             )}
         </Typography>
     )

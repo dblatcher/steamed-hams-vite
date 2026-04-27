@@ -1,3 +1,4 @@
+import { Box, Button, Typography } from "@mui/material";
 import { GameDataContext } from "point-click-components";
 import { useContext } from "react";
 
@@ -14,15 +15,21 @@ export const ConversationMenu = () => {
         return <section>ERR</section>
     }
 
-    return <section>
+    return <Box component={'section'}>
         {branch.choices.filter(choice => !choice.disabled).map((choice, index) => (
-            <div key={index}>
-                <button
-
+            <Box key={index} >
+                <Button sx={{
+                    paddingY:.5,
+                    width:'100%'
+                }}
                     onClick={() => {
                         dispatch({ type: 'CONVERSATION-CHOICE', choice })
-                    }}>{choice.text}</button>
-            </div>
+                    }}>
+                    <Typography sx={{textTransform: 'none', fontSize:'small'}}>
+                        {choice.text}
+                    </Typography>
+                </Button>
+            </Box>
         ))}
-    </section>
+    </Box>
 }
