@@ -1,0 +1,1 @@
+export const row = { display: 'flex', justifyContent: 'center', gap: 2, paddingBottom: 1 }

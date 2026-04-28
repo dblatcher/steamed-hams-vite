@@ -1,18 +1,17 @@
 import { useState } from "react";
 import { AssetPreloader } from "./AssetPreloader";
 import { GameIcon } from "./GameIcon";
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Box, Button, Card, Container, Typography } from "@mui/material";
+import { row } from "./styles";
 
 interface Props {
     start: { (): void }
     showGameEndMessage: boolean
 }
 
-const row = { display: 'flex', justifyContent: 'center', gap: 2, paddingBottom: 1 }
-
 export const LoadingScreen = ({ start, showGameEndMessage }: Props) => {
     const [assetsLoaded, setAssetsLoaded] = useState(false);
-    return <Container component={'main'} maxWidth="lg">
+    return <Box component={Card} sx={{ padding: 1 }}>
         <Box component={'header'} >
             <Box sx={row}>
                 <GameIcon height={100} />
@@ -41,5 +40,5 @@ export const LoadingScreen = ({ start, showGameEndMessage }: Props) => {
                 </p>
             </section>
         )}
-    </Container>
+    </Box>
 }
