@@ -1,4 +1,4 @@
-import { Box, Card, Container } from "@mui/material";
+import { Box, Card } from "@mui/material";
 import { ContextualGameRoom, GameDataContext, StoryBoardPlayer, UiStateContext } from "point-click-components";
 import type { GameData } from "point-click-lib";
 import { useCallback, useContext, useEffect, useRef } from "react";
@@ -7,9 +7,6 @@ import { ActionButtons } from "./game-ui/ActionButtons";
 import { CommandLine } from "./game-ui/CommandLine";
 import { InventoryTargets } from "./game-ui/InventoryTargets";
 import { OptionsMenu } from "./game-ui/OptionsMenu";
-
-
-
 
 export const getUiCondition = (gameState: GameData) => {
     return gameState.currentStoryBoardId

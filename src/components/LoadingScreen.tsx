@@ -1,7 +1,7 @@
+import { Box, Button, Card, Typography } from "@mui/material";
 import { useState } from "react";
 import { AssetPreloader } from "./AssetPreloader";
 import { GameIcon } from "./GameIcon";
-import { Box, Button, Card, Container, Typography } from "@mui/material";
 import { row } from "./styles";
 
 interface Props {
