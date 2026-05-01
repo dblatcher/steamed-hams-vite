@@ -5,8 +5,8 @@ import type { ImageAsset, SoundAsset } from './types'
 import { GameDesignSchema } from 'point-click-lib';
 
 
-export const imageAssets = (_imageAssets as ImageAsset[]).map(asset => ({ ...asset, href: `/images/${asset.id}` }));
-export const soundAssets = (_soundAssets as SoundAsset[]).map(asset => ({ ...asset, href: `/sounds/${asset.id}` }));
+export const imageAssets = (_imageAssets as ImageAsset[]).map(asset => ({ ...asset, href: `images/${asset.id}` }));
+export const soundAssets = (_soundAssets as SoundAsset[]).map(asset => ({ ...asset, href: `sounds/${asset.id}` }));
 export const gameDesign = GameDesignSchema.parse(_gameDesign);
 
 
