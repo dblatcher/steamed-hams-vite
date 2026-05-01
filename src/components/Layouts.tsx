@@ -1,12 +1,14 @@
 import { Box, Card } from "@mui/material";
 import { ContextualGameRoom, GameDataContext, StoryBoardPlayer, UiStateContext } from "point-click-components";
 import type { GameData } from "point-click-lib";
+import type { MouseEvent } from "react";
 import { useCallback, useContext, useEffect, useRef } from "react";
-import { ConversationMenu } from "./game-ui/ConversationMenu";
 import { ActionButtons } from "./game-ui/ActionButtons";
 import { CommandLine } from "./game-ui/CommandLine";
+import { ConversationMenu } from "./game-ui/ConversationMenu";
 import { InventoryTargets } from "./game-ui/InventoryTargets";
 import { OptionsMenu } from "./game-ui/OptionsMenu";
+import { useLookAtTarget } from "./game-ui/useLookAtTarget";
 
 export const getUiCondition = (gameState: GameData) => {
     return gameState.currentStoryBoardId
@@ -41,13 +43,16 @@ export const Layout = () => {
         }
     }, [handleResize])
 
+    const lookAtTarget = useLookAtTarget()
+
+
     return <>
         <Box component={Card} sx={{ display: 'flex', justifyContent: 'flex-start', gap: 1, padding: 1 }} ref={boxRef}>
             <Box>
                 {ui === 'story-board' && storyBoard ? (
                     <StoryBoardPlayer storyBoard={storyBoard} />
                 ) : (
-                    <ContextualGameRoom />
+                    <ContextualGameRoom handleTargetContextClick={(target, event) => lookAtTarget(target, event as unknown as MouseEvent)} />
                 )}
                 <Box sx={{ minHeight: 90 }}>
                     {ui === 'verbs' && <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingTop: 1, }}>

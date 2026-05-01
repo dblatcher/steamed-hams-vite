@@ -1,8 +1,9 @@
 import { Box, Button } from "@mui/material"
 import { GameDataContext, UiStateContext, usePlayerInventory } from "point-click-components"
 import type { ItemData, Verb } from "point-click-lib"
-import { useContext } from "react"
+import { useContext, } from "react"
 import { ItemIIcon } from "./ItemIcon"
+import { useLookAtTarget } from "./useLookAtTarget"
 
 
 
@@ -12,6 +13,7 @@ const ItemTargetButton = ({ item, currentVerb }: { item: ItemData, currentVerb?:
     const { uiState, dispatchUi } = useContext(UiStateContext)
     const { itemId: currentItemId, verbId } = uiState
     const disabled = item.id === currentItemId || currentVerb?.isNotForItems;
+    const lookAtTarget = useLookAtTarget()
 
     return <Button
         sx={{ minHeight: 50, minWidth: 50, padding: .5 }}
@@ -23,6 +25,7 @@ const ItemTargetButton = ({ item, currentVerb }: { item: ItemData, currentVerb?:
                 dispatchUi({ type: 'SET_HOVER_TARGET' })
             }
         }}
+        onContextMenu={(event) => lookAtTarget(item, event)}
         disabled={disabled}
         variant={'contained'}
         onClick={() => {
