@@ -2,7 +2,7 @@ import { Box, Card } from "@mui/material";
 import { ContextualGameRoom, GameDataContext, StoryBoardPlayer, UiStateContext } from "point-click-components";
 import type { GameData } from "point-click-lib";
 import { useCallback, useContext, useEffect, useRef } from "react";
-import { ConversationMenu } from "./ConversationMenu";
+import { ConversationMenu } from "./game-ui/ConversationMenu";
 import { ActionButtons } from "./game-ui/ActionButtons";
 import { CommandLine } from "./game-ui/CommandLine";
 import { InventoryTargets } from "./game-ui/InventoryTargets";

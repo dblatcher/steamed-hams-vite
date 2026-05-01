@@ -1,5 +1,5 @@
 import { Box, Button } from "@mui/material"
-import { GameDataContext, UiStateContext } from "point-click-components"
+import { GameDataContext, UiStateContext, usePlayerInventory } from "point-click-components"
 import type { ItemData, Verb } from "point-click-lib"
 import { useContext } from "react"
 import { ItemIIcon } from "./ItemIcon"
@@ -35,19 +35,16 @@ const ItemTargetButton = ({ item, currentVerb }: { item: ItemData, currentVerb?:
 
 
 export const InventoryTargets = () => {
-    const { gameState, gameDesign } = useContext(GameDataContext)
+    const { gameDesign } = useContext(GameDataContext)
     const { uiState } = useContext(UiStateContext)
     const { verbs } = gameDesign
-    const { items, actors } = gameState
     const { verbId } = uiState
-
-    const player = actors.find(a => a.isPlayer)
     const currentVerb = verbs.find(verb => verb.id === verbId)
-
+    const inventory = usePlayerInventory()
 
     return (
         <Box sx={{ gap: 1, display: 'flex' }}>
-            {items.filter(item => item.actorId === player?.id).map((item) => (
+            {inventory.map((item) => (
                 <ItemTargetButton key={item.id} item={item} currentVerb={currentVerb} />
             ))}
         </Box>

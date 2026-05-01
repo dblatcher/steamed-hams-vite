@@ -1,5 +1,5 @@
 import { ButtonGroup, Button, Typography } from "@mui/material"
-import { GameDataContext, UiStateContext } from "point-click-components"
+import { GameDataContext, UiStateContext, usePlayerInventory } from "point-click-components"
 import { useContext } from "react"
 import { ItemIIcon } from "./ItemIcon"
 
@@ -21,12 +21,10 @@ const VerbIcon = ({ verbId }: { verbId: string }) => {
 
 
 export const ActionButtons = () => {
-    const { gameDesign, gameState } = useContext(GameDataContext)
+    const { gameDesign } = useContext(GameDataContext)
     const { uiState, dispatchUi } = useContext(UiStateContext)
     const { verbId, itemId } = uiState
-    const { items, actors, } = gameState
-    const player = actors.find(a => a.isPlayer)
-
+    const inventory = usePlayerInventory()
 
     return <ButtonGroup orientation="vertical" >
         {gameDesign.verbs.map((verb) => (
@@ -43,8 +41,8 @@ export const ActionButtons = () => {
             </Button>
         ))}
 
-        {items.filter(item => item.actorId === player?.id).map((item) => (
-            <Button
+        {inventory.map((item) => (
+            <Button key={item.id}
                 title={`use ${item.name ?? item.id}`}
                 sx={{ minHeight: 50, minWidth: 50, padding: .5, height: 50 }}
                 variant={item.id === itemId ? 'contained' : 'outlined'}

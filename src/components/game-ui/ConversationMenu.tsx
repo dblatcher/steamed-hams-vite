@@ -1,18 +1,14 @@
 import { Box, Button, Typography } from "@mui/material";
-import { GameDataContext } from "point-click-components";
+import { GameDataContext, useConversationBranch } from "point-click-components";
 import { useContext } from "react";
 
 
 export const ConversationMenu = () => {
-    const { dispatch, gameState } = useContext(GameDataContext)
-    const { conversations, currentConversationId } = gameState;
-    const currentConversation = conversations.find(c => c.id === currentConversationId);
-    const currentBranch = currentConversation?.currentBranch ?? currentConversation?.defaultBranch ?? '';
-    const branch = currentConversation && currentConversation.branches[currentBranch]
-
+    const { dispatch } = useContext(GameDataContext)
+    const branch = useConversationBranch()
 
     if (!branch) {
-        return <section>ERR</section>
+        return null
     }
 
     return <Box component={'section'}>
