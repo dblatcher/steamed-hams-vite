@@ -1,6 +1,7 @@
 import { GameRunner } from 'point-click-components';
 import { gameDesign, getImageAsset, getSoundAsset } from '../assets';
 import { Layout } from './Layouts';
+import { SpeechBubble } from './game-ui/SpeechBubble';
 
 interface Props {
     logDebugMessages?: boolean;
@@ -11,6 +12,7 @@ export const Game = ({ logDebugMessages, returnToTitle }: Props) => {
     return (
         <GameRunner
             Layout={Layout}
+            SpeechBubbleComponent={SpeechBubble}
             gameDesign={gameDesign}
             getImageAsset={getImageAsset}
             getSoundAsset={getSoundAsset}
