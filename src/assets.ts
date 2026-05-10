@@ -1,7 +1,7 @@
 import _imageAssets from './game-data/imageAssets.json'
 import _soundAssets from './game-data/soundAssets.json'
 import _gameDesign from './game-data/game.json'
-import type { ImageAsset, SoundAsset } from './types'
+import type { GetImageAsset, GetSoundAsset, ImageAsset, SoundAsset } from 'point-click-components'
 import { GameDesignSchema } from 'point-click-lib';
 
 
@@ -10,7 +10,7 @@ export const soundAssets = (_soundAssets as SoundAsset[]).map(asset => ({ ...ass
 export const gameDesign = GameDesignSchema.parse(_gameDesign);
 
 
-export const getSoundAsset = (id: string) => {
+export const getSoundAsset: GetSoundAsset = (id: string) => {
     const asset = soundAssets.find(asset => asset.id === id)
     if (!asset) {
         return undefined
@@ -18,7 +18,7 @@ export const getSoundAsset = (id: string) => {
     return asset
 };
 
-export const getImageAsset = (id: string): ImageAsset | undefined => {
+export const getImageAsset: GetImageAsset = (id: string): ImageAsset | undefined => {
     const asset = imageAssets.find(asset => asset.id === id);
     if (!asset) {
         return undefined
