@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogContent, DialogTitle } from "@mui/material"
-import { GameDataContext } from "point-click-components"
+import { GameDataContext, UiStateContext } from "point-click-components"
 import { useContext, useState } from "react"
 
 
@@ -7,9 +7,15 @@ export const OptionsMenu = () => {
 
     const [isOpen, setIsOpen] = useState(false)
     const { dispatch, gameState } = useContext(GameDataContext)
+    const {dispatchUi, uiState} = useContext(UiStateContext)
 
     return <>
-
+        <Button color="secondary"
+            sx={{ borderRadius: '50%', padding: .5, width: 40, height: 40, boxSizing: 'border-box', minWidth: 40, fontSize:'large' }}
+            onClick={() => {
+                dispatchUi({ type: 'SET_HIGHLIGHT', on: !uiState.highlightOn })
+            }} variant="contained" title="highlight">🖍️</Button>
+        
         <Button
             sx={{ borderRadius: '50%', padding: .5, width: 40, height: 40, boxSizing: 'border-box', minWidth: 40, fontSize:'large' }}
             onClick={() => {
