@@ -4,7 +4,7 @@ import { links } from "../constants";
 import { AssetPreloader } from "./AssetPreloader";
 import { BlueskyButton } from "./BlueskyButton";
 import { GameCompleteMessage } from "./GameCompleteMessage";
-import { frameStyle, row, rowJustify } from "./styles";
+import { frameStyle, row } from "./styles";
 import { TitleHeader } from "./TitleHeader";
 
 interface Props {
@@ -22,8 +22,8 @@ export const LoadingScreen = ({ start, showGameEndMessage, dismissGameEndMessage
         </Box>
         <Box component={'section'} >
             <Box sx={row}>
-                <Button onClick={start} disabled={!assetsLoaded} variant="contained">start</Button>
-
+                <Button onClick={start} disabled={!assetsLoaded} variant="contained">start game</Button>
+                <BlueskyButton label="share on bluesky" postText="play this" />
             </Box>
             <Box sx={row}>
                 <AssetPreloader reportReady={() => setAssetsLoaded(true)} />
@@ -31,10 +31,6 @@ export const LoadingScreen = ({ start, showGameEndMessage, dismissGameEndMessage
         </Box>
         <Box sx={row}>
             <Typography>This game was build using <a target="_blank" href={links.POINT_AND_CLICK}>Point And Click</a>, a free web-based adventure game editor.</Typography>
-        </Box>
-
-        <Box sx={rowJustify}>
-            <BlueskyButton label="share on bluesky" postText="play this" />
         </Box>
 
         <GameCompleteMessage

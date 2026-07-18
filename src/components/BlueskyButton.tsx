@@ -31,6 +31,7 @@ export const BlueskyButton: React.FunctionComponent<Props> = ({ postText, label,
     switch (format) {
         case 'text':
             return <Button
+                variant='outlined'
                 startIcon={<BluskyIcon size={30} />}
                 href={url.toString()}
                 target="_blank">

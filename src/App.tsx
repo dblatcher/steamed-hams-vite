@@ -13,7 +13,8 @@ const Frame = ({ children }: { children: ReactNode }) => (
       flexDirection: 'column',
       justifyContent: 'center',
       position: 'absolute',
-      inset: 0
+      inset: 0,
+      backgroundImage: "url(thatch.png)"
     }}
   >{children}</Container>
 )
