@@ -1,24 +1,29 @@
 import { Box, Button, Card, Typography } from "@mui/material";
 import { useState } from "react";
+import { links } from "../constants";
 import { AssetPreloader } from "./AssetPreloader";
+import { BlueskyButton } from "./BlueskyButton";
+import { GameCompleteMessage } from "./GameCompleteMessage";
 import { GameIcon } from "./GameIcon";
-import { row } from "./styles";
+import { GameImageBox } from "./GameImage";
+import { row, rowJustify, rowLeft } from "./styles";
 
 interface Props {
     start: { (): void }
     showGameEndMessage: boolean
+    dismissGameEndMessage: { (): void }
 }
 
-export const LoadingScreen = ({ start, showGameEndMessage }: Props) => {
+export const LoadingScreen = ({ start, showGameEndMessage, dismissGameEndMessage }: Props) => {
     const [assetsLoaded, setAssetsLoaded] = useState(false);
     return <Box component={Card} sx={{ padding: 1 }}>
         <Box component={'header'} >
-            <Box sx={row}>
+            <Box sx={rowLeft}>
                 <GameIcon height={100} />
-                <Typography variant="h1">Steamed Hams</Typography>
-            </Box>
-            <Box sx={row}>
-                <Typography>but it's a point and click adventure game</Typography>
+                <Box>
+                    <Typography variant="h1">Steamed Hams</Typography>
+                    <Typography>but it's a point and click adventure game</Typography>
+                </Box>
             </Box>
         </Box>
         <Box component={'section'} >
@@ -31,14 +36,16 @@ export const LoadingScreen = ({ start, showGameEndMessage }: Props) => {
             </Box>
         </Box>
         <Box sx={row}>
-            <Typography>This game was build using <a target="_blank" href="http://point-and-click-seven.vercel.app/">Point And Click</a>, a free web-based adventure game editor.</Typography>
+            <Typography>This game was build using <a target="_blank" href={links.POINT_AND_CLICK}>Point And Click</a>, a free web-based adventure game editor.</Typography>
         </Box>
-        {showGameEndMessage && (
-            <section>
-                <p>
-                    <strong>Well done, you finished the game.</strong>
-                </p>
-            </section>
-        )}
+
+        <Box sx={rowJustify}>
+            <BlueskyButton label="share on bluesky" postText="play this" />
+            <GameImageBox imageId="title-chalmers.png" boxProps={{ sx: { flexBasis: 100 } }} />
+        </Box>
+
+        <GameCompleteMessage
+            dismissGameEndMessage={dismissGameEndMessage}
+            showGameEndMessage={showGameEndMessage} />
     </Box>
 }

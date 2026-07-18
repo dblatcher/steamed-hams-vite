@@ -32,7 +32,11 @@ function App() {
   return <Frame>
     {started
       ? <Game logDebugMessages={false} returnToTitle={returnToTitle} />
-      : <LoadingScreen start={() => setStarted(true)} showGameEndMessage={showGameEndMessage} />}
+      : <LoadingScreen
+        start={() => setStarted(true)}
+        showGameEndMessage={showGameEndMessage}
+        dismissGameEndMessage={() => setShowGameEndMessage(false)}
+      />}
   </Frame>
 
 
