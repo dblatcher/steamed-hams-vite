@@ -9,6 +9,7 @@ import { ConversationMenu } from "./game-ui/ConversationMenu";
 import { InventoryTargets } from "./game-ui/InventoryTargets";
 import { OptionsMenu } from "./game-ui/OptionsMenu";
 import { useLookAtTarget } from "./game-ui/useLookAtTarget";
+import { colors } from "../constants";
 
 export const getUiCondition = (gameState: GameData) => {
     return gameState.currentStoryBoardId
@@ -47,7 +48,7 @@ export const Layout = () => {
 
 
     return <>
-        <Box component={Card} sx={{ display: 'flex', justifyContent: 'flex-start', gap: 1, padding: 1 }} ref={boxRef}>
+        <Box component={Card} sx={{ display: 'flex', justifyContent: 'flex-start', gap: 1, padding: 1, backgroundColor: colors.background }} ref={boxRef}>
             <Box>
                 {ui === 'story-board' && storyBoard ? (
                     <StoryBoardPlayer storyBoard={storyBoard} />

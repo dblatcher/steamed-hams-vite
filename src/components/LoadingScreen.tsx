@@ -4,9 +4,8 @@ import { links } from "../constants";
 import { AssetPreloader } from "./AssetPreloader";
 import { BlueskyButton } from "./BlueskyButton";
 import { GameCompleteMessage } from "./GameCompleteMessage";
-import { GameIcon } from "./GameIcon";
-import { GameImageBox } from "./GameImage";
-import { row, rowJustify, rowLeft } from "./styles";
+import { frameStyle, row, rowJustify } from "./styles";
+import { TitleHeader } from "./TitleHeader";
 
 interface Props {
     start: { (): void }
@@ -16,15 +15,10 @@ interface Props {
 
 export const LoadingScreen = ({ start, showGameEndMessage, dismissGameEndMessage }: Props) => {
     const [assetsLoaded, setAssetsLoaded] = useState(false);
-    return <Box component={Card} sx={{ padding: 1 }}>
-        <Box component={'header'} >
-            <Box sx={rowLeft}>
-                <GameIcon height={100} />
-                <Box>
-                    <Typography variant="h1">Steamed Hams</Typography>
-                    <Typography>but it's a point and click adventure game</Typography>
-                </Box>
-            </Box>
+    return <Box component={Card} sx={frameStyle}>
+        <TitleHeader />
+        <Box sx={row}>
+            <Typography variant="subtitle1">Steamed Hams, but it's a point and click adventure game</Typography>
         </Box>
         <Box component={'section'} >
             <Box sx={row}>
@@ -41,7 +35,6 @@ export const LoadingScreen = ({ start, showGameEndMessage, dismissGameEndMessage
 
         <Box sx={rowJustify}>
             <BlueskyButton label="share on bluesky" postText="play this" />
-            <GameImageBox imageId="title-chalmers.png" boxProps={{ sx: { flexBasis: 100 } }} />
         </Box>
 
         <GameCompleteMessage
