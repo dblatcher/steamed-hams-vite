@@ -51,3 +51,7 @@ If you look at `src\assets.ts`, you'll see how the default implementation maps t
 ## Building for production
 `npm run build`
 Compiled files will be output to the ./dist folder.
+
+REMINDER - after running build, remove leading slashes from paths to the css and js file in
+dist\index.html
+TO DO - fix this in config?
