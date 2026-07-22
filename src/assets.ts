@@ -1,7 +1,7 @@
 import _imageAssets from './game-data/imageAssets.json'
 import _soundAssets from './game-data/soundAssets.json'
 import _gameDesign from './game-data/game.json'
-import type { GetImageAsset, GetSoundAsset, ImageAsset, SoundAsset } from 'point-click-components'
+import type { FileAsset, GetImageAsset, GetSoundAsset, ImageAsset, SoundAsset } from 'point-click-components'
 import { GameDesignSchema } from 'point-click-lib';
 
 
@@ -26,24 +26,27 @@ export const getImageAsset: GetImageAsset = (id: string): ImageAsset | undefined
     return asset
 }
 
-export const loadImage = async (asset: ImageAsset): Promise<HTMLImageElement> => {
-    return new Promise((resolve, reject) => {
-        if (asset.img) {
-            console.warn('asset already loaded', asset)
-            return resolve(asset.img);
-        }
-        const image = new Image();
-        image.src = asset.href;
-        image.addEventListener('load', () => resolve(image), { once: true });
-        image.addEventListener('error', (event) => reject(event), { once: true });
-    });
-};
+const loadedAssetUrls = new Map<string, string | undefined>()
 
-export const loadSound = async (asset: SoundAsset): Promise<HTMLAudioElement> => {
-    return new Promise((resolve, reject) => {
-        const audio = new Audio();
-        audio.src = asset.href
-        audio.addEventListener('canplay', () => resolve(audio), { once: true });
-        audio.addEventListener('error', (event) => reject(event), { once: true });
-    });
+export const loadAssetAndSetObjectUrl = async (asset: FileAsset): Promise<string | undefined> => {
+    if (asset.href.startsWith("blob")) {
+        return asset.href
+    }
+
+    if (loadedAssetUrls.has(asset.href)) {
+        return loadedAssetUrls.get(asset.href)
+    }
+    loadedAssetUrls.set(asset.href, undefined)
+    try {
+        const response = await fetch(asset.href)
+        const blob = await response.blob()
+        const objectUrl = URL.createObjectURL(blob);
+        loadedAssetUrls.set(asset.href, objectUrl)
+        asset.href = objectUrl
+        return (objectUrl)
+    } catch (err) {
+        console.error('failed to load asset', asset, err)
+        loadedAssetUrls.delete(asset.href)
+        throw err
+    }
 };

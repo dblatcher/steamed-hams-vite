@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { imageAssets, loadImage, loadSound, soundAssets } from "../assets";
+import { imageAssets, loadAssetAndSetObjectUrl, soundAssets } from "../assets";
 
 
 interface Props {
@@ -55,10 +55,11 @@ export const AssetPreloader = ({ reportReady }: Props) => {
 
     useEffect(() => {
         imageAssets.forEach(asset => {
-            loadImage(asset)
-                .then(image => {
-                    asset.img = image;
-                    addLoadedImage(asset.href)
+            loadAssetAndSetObjectUrl(asset)
+                .then((objectUrl) => {
+                    if (objectUrl) {
+                        addLoadedImage(objectUrl)
+                    }
                 })
                 .catch(error => {
                     console.error('image load fail', { asset, error })
@@ -67,9 +68,11 @@ export const AssetPreloader = ({ reportReady }: Props) => {
         });
 
         soundAssets.forEach(asset => {
-            loadSound(asset)
-                .then(() => {
-                    addLoadedSound(asset.href)
+            loadAssetAndSetObjectUrl(asset)
+                .then((objectUrl) => {
+                    if (objectUrl) {
+                        addLoadedSound(objectUrl)
+                    }
                 })
                 .catch(error => {
                     console.error('sound load fail', { asset, error })
